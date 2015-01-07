@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="3.0" group="logman" method="upgrade" overwrite="true">
+    <identifier>plg:logman.kunena</identifier>
+    <name>plg_logman_kunena</name>
+    <author>Joomlatools</author>
+    <creationDate>January 2015</creationDate>
+    <copyright>Copyright (C) 2011 - 2015 Timble CVBA (http://www.timble.net)</copyright>
+    <license>GNU GPLv3 - http://www.gnu.org/licenses/gpl.html</license>
+    <authorEmail>support@joomlatools.com</authorEmail>
+    <authorUrl>www.joomlatools.com</authorUrl>
+    <version>2.0.0</version>
+    <description>PLG_LOGMAN_KUNENA_DESC</description>
+
+    <files>
+        <filename plugin="kunena">kunena.php</filename>
+        <folder>activity</folder>
+        <folder>language</folder>
+    </files>
+
+    <config>
+        <fields name="params" />
+    </config>
+</extension>
