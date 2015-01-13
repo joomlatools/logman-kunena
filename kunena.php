@@ -106,7 +106,13 @@ class PlgLogmanKunena extends ComLogmanPluginJoomla
                     $this->_ignore_save = array_merge($this->_ignore_save, array('topic', 'category'));
                 }
 
-                $task = $this->getObject('request')->getQuery()->task;
+                $request = $this->getObject('request');
+
+                $task = $request->getQuery()->task;
+
+                if (!$task) {
+                    $task = $request->getData()->task; // Attempt to get task from POST data.
+                }
 
                 switch ($task)
                 {
@@ -114,6 +120,7 @@ class PlgLogmanKunena extends ComLogmanPluginJoomla
                         $verb   = 'trash';
                         $result = 'trashed';
                         break;
+                    case 'restore':
                     case 'undelete':
                         $verb   = 'restore';
                         $result = 'restored';
