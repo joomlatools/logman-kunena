@@ -11,6 +11,8 @@
     <version>2.0.0</version>
     <description>PLG_LOGMAN_KUNENA_DESC</description>
 
+    <scriptfile>install.php</scriptfile>
+
     <files>
         <filename plugin="kunena">kunena.php</filename>
         <folder>activity</folder>
