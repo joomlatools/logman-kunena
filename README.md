@@ -39,7 +39,6 @@ The following Kunena actions are currently logged:
 * Add
 * Edit
 * Delete
-* Publish/Unpublish
 * Lock/Unlock
 * Stick/Unstick
 * Trash/Restore
