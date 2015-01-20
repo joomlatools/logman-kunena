@@ -15,6 +15,7 @@
 
     <files>
         <filename plugin="kunena">kunena.php</filename>
+        <filename>version.php</filename>
         <folder>activity</folder>
         <folder>language</folder>
     </files>
