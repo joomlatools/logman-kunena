@@ -37,7 +37,7 @@ class plgLogmanKunenaInstallerScript
         // Check LOGman version.
         if ($return === true)
         {
-            if (version_compare($this->getLogmanVersion(), '2.0.2', '<'))
+            if (version_compare($this->getLogmanVersion(), '2.1.0', '<'))
             {
                 $errors[] = JText::_('This component requires a newer LOGman version. Please download the latest version from <a href=http://joomlatools.com target=_blank>joomlatools.com</a> and upgrade.');
                 $return   = false;
