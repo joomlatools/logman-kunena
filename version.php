@@ -14,12 +14,12 @@
  */
 class PlgLogmanKunenaVersion extends KObject
 {
-    const VERSION = '2.0.0';
+    const VERSION = '2.1.0';
 
     /**
      * The LOGman API version used by the plugin. i.e. the LOGman version that got used for developing this plugin.
      */
-    const API_VERSION = '2.0.2';
+    const API_VERSION = '2.1.0';
 
     /**
      * Get the version
