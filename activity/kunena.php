@@ -93,4 +93,46 @@ class PlgLogmanKunenaActivityKunena extends ComLogmanModelEntityActivity
 
         return self::$_item_id;
     }
+
+    protected function _getSiteRoute($url)
+    {
+        $app = JFactory::getApplication();
+
+        $site = JApplicationCms::getInstance('site');
+
+        // Force site app.
+        JFactory::$application = $site;
+
+        // Use site router.
+        $router = $site->getRouter();
+
+        $url = sprintf('index.php?%s', $url);
+
+        // Build route.
+        $route = $router->build($url);
+
+        // Revert app change.
+        JFactory::$application = $app;
+
+        $route = $route->toString(array('path', 'query', 'fragment'));
+
+        // Check if we need to remove "administrator" from the path
+        if ($app->isAdmin())
+        {
+            $base = JUri::base('true');
+
+            $replacement = explode('/', $base);
+            array_pop($replacement);
+            $replacement = implode('/', $replacement);
+
+            $base = str_replace('/', '\/', $base);
+
+            $route = preg_replace('/^'. $base .'/', $replacement, $route);
+        }
+
+        // Replace spaces.
+        $route = preg_replace('/\s/u', '%20', $route);
+
+        return $this->getObject('lib:http.url', array('url' => $route));
+    }
 }
