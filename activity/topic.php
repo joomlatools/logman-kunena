@@ -36,10 +36,6 @@ class PlgLogmanKunenaActivityTopic extends PlgLogmanKunenaActivityKunena
 
         $config->append(array('url' => $url));
 
-        if ($config->url) {
-            $config->append(array('attributes' => array('target' => '_blank')));
-        }
-
         parent::_objectConfig($config);
     }
 }
