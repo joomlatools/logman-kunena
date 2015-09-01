@@ -43,10 +43,6 @@ class PlgLogmanKunenaActivityMessage extends PlgLogmanKunenaActivityKunena
             'type' => array('url' => $url, 'find' => 'object'),
         ));
 
-        if ($config->type->url) {
-            $config->append(array('type' => array('attributes' => array('target' => '_blank'))));
-        }
-
         parent::_objectConfig($config);
     }
 
@@ -88,10 +84,6 @@ class PlgLogmanKunenaActivityMessage extends PlgLogmanKunenaActivityKunena
             'type'    => array('object' => true, 'objectName' => 'topic'),
             'subtype' => array('object' => true, 'objectName' => 'Kunena')
         );
-
-        if ($url) {
-            $config['attributes'] = array('target' => '_blank');
-        }
 
         return $this->_getObject($config);
     }
