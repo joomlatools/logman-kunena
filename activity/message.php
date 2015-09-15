@@ -32,20 +32,17 @@ class PlgLogmanKunenaActivityMessage extends PlgLogmanKunenaActivityKunena
         if ($item_id = $this->_getMenuItem())
         {
             $metadata = $this->getMetadata();
-            $url      = $this->getObject('lib:http.url', array(
-                'url' => sprintf('%sindex.php?option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%s#%s',
-                    JURI::root(), $metadata->topic->id, $metadata->category, $item_id, $this->row)
-            ));
+            $url      = $this->_getSiteRoute(sprintf('option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%s', $metadata->topic->id, $metadata->category, $item_id));
+
+            if ($row = $this->row) {
+                $url = $this->getObject('lib:http.url', array('url' => sprintf('%s#%s', $url->toString(), $row)));
+            }
         }
 
         $config->append(array(
             'url'  => $url,
             'type' => array('url' => $url, 'find' => 'object'),
         ));
-
-        if ($config->type->url) {
-            $config->append(array('type' => array('attributes' => array('target' => '_blank'))));
-        }
 
         parent::_objectConfig($config);
     }
@@ -76,10 +73,7 @@ class PlgLogmanKunenaActivityMessage extends PlgLogmanKunenaActivityKunena
         if ($item_id = $this->_getMenuItem())
         {
             $metadata = $this->getMetadata();
-            $url      = $this->getObject('lib:http.url', array(
-                'url' => sprintf('%sindex.php?option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%s',
-                    JURI::root(), $metadata->topic->id, $metadata->category, $item_id)
-            ));
+            $url      = $this->_getSiteRoute(sprintf('option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%s', $metadata->topic->id, $metadata->category, $item_id));
         }
 
         $config = array(
@@ -88,10 +82,6 @@ class PlgLogmanKunenaActivityMessage extends PlgLogmanKunenaActivityKunena
             'type'    => array('object' => true, 'objectName' => 'topic'),
             'subtype' => array('object' => true, 'objectName' => 'Kunena')
         );
-
-        if ($url) {
-            $config['attributes'] = array('target' => '_blank');
-        }
 
         return $this->_getObject($config);
     }

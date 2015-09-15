@@ -30,15 +30,10 @@ class PlgLogmanKunenaActivityTopic extends PlgLogmanKunenaActivityKunena
         if ($item_id = $this->_getMenuItem())
         {
             $metadata = $this->getMetadata();
-            $url      = sprintf('%sindex.php?option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%s', JURI::root(), $this->row, $metadata->category, $item_id);
-            $url      = $this->getObject('lib:http.url', array('url' => $url));
+            $url      = $this->_getSiteRoute(sprintf('option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%s', $this->row, $metadata->category, $item_id));
         }
 
         $config->append(array('url' => $url));
-
-        if ($config->url) {
-            $config->append(array('attributes' => array('target' => '_blank')));
-        }
 
         parent::_objectConfig($config);
     }

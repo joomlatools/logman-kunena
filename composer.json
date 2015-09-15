@@ -1,8 +1,8 @@
 {
   "name": "joomlatools/plg_logman_kunena",
-  "type": "joomla-extension",
+  "type": "joomlatools-installer",
   "license": "GPLv3",
-  "description": "Handles logging of Kunena Forum  events",
+  "description": "Handles logging of Kunena Forum events",
   "keywords": [
     "joomla",
     "extension",
@@ -19,6 +19,6 @@
     }
   ],
   "require": {
-    "nooku/installer": "*"
+    "joomlatools/installer": "*"
   }
 }
