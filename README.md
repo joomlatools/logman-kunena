@@ -1,7 +1,7 @@
 LOGman Kunena plugin
 ========================
 
-Plugin for integrating [Kunena](http://www.kunena.org/) with LOGman. [LOGman](http://joomlatools.com/logman) is a user analytics and audit trail solution for Joomla.
+Plugin for integrating [Kunena](http://www.kunena.org/) with LOGman. [LOGman](http://www.joomlatools.com/extensions/logman/) is a user analytics and audit trail solution for Joomla.
 
 ## Installation
 
