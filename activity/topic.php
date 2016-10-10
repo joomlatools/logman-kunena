@@ -17,7 +17,8 @@ class PlgLogmanKunenaActivityTopic extends PlgLogmanKunenaActivityKunena
     protected function _initialize(KObjectConfig $config)
     {
         $config->append(array(
-            'object_table' => 'kunena_topics'
+            'object_table' => 'kunena_topics',
+            'context'      => 'site'
         ));
 
         parent::_initialize($config);

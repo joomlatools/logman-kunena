@@ -19,7 +19,8 @@ class PlgLogmanKunenaActivityMessage extends PlgLogmanKunenaActivityKunena
     {
         $config->append(array(
             'format'       => '{actor} {action} {object.type} {target} {target.subtype} {target.type}',
-            'object_table' => 'kunena_messages'
+            'object_table' => 'kunena_messages',
+            'context'      => 'site'
         ));
 
         parent::_initialize($config);
