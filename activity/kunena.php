@@ -21,7 +21,10 @@ class PlgLogmanKunenaActivityKunena extends ComLogmanModelEntityActivity
 
     protected function _initialize(KObjectConfig $config)
     {
-        $config->append(array('format' => '{actor} {action} {object.subtype} {object.type} title {object}'));
+        $config->append(array(
+            'format'  => '{actor} {action} {object.subtype} {object.type} title {object}'
+        ));
+
         parent::_initialize($config);
     }
 
