@@ -58,4 +58,4 @@ The following Kunena actions are currently logged:
 
 ## Limitations
 
-Due to a problem in the event dispatching system of the latest Kunena version (v4.0.3), activities for announcements are not currently supported.
+Due to a problem in the event dispatching system of the latest Kunena version (v5.0.2), activities for announcements are not currently supported.
