@@ -26,15 +26,14 @@ class PlgLogmanKunenaActivityTopic extends PlgLogmanKunenaActivityKunena
 
     protected function _objectConfig(KObjectConfig $config)
     {
-        $url = null;
+        $metadata = $this->getMetadata();
 
-        if ($item_id = $this->_getMenuItem())
-        {
-            $metadata = $this->getMetadata();
-            $url      = $this->_getSiteRoute(sprintf('option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%s', $this->row, $metadata->category, $item_id));
-        }
-
-        $config->append(array('url' => $url));
+        $config->append(array(
+            'pages' => array(
+                'template'   => sprintf('option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%%s', $this->row, $metadata->category),
+                'conditions' => array('option' => 'com_kunena', 'view' => 'home')
+            )
+        ));
 
         parent::_objectConfig($config);
     }
