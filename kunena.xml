@@ -22,4 +22,36 @@
     <config>
         <fields name="params" />
     </config>
+
+    <resources>
+        <resource name="topic">
+            <actions>
+                <action>add</action>
+                <action>edit</action>
+                <action>delete</action>
+                <action>lock</action>
+                <action>unlock</action>
+                <action>stick</action>
+                <action>unstick</action>
+                <action>trash</action>
+                <action>restore</action>
+            </actions>
+        </resource>
+        <resource name="category">
+            <actions>
+                <action>add</action>
+                <action>edit</action>
+                <action>delete</action>
+            </actions>
+        </resource>
+        <resource name="message">
+            <actions>
+                <action>add</action>
+                <action>edit</action>
+                <action>delete</action>
+                <action>trash</action>
+                <action>restore</action>
+            </actions>
+        </resource>
+    </resources>
 </extension>
