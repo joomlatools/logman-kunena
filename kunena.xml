@@ -3,12 +3,12 @@
     <identifier>plg:logman.kunena</identifier>
     <name>plg_logman_kunena</name>
     <author>Joomlatools</author>
-    <creationDate>September 2015</creationDate>
-    <copyright>Copyright (C) 2011 - 2015 Timble CVBA (http://www.timble.net)</copyright>
+    <creationDate>October 2016</creationDate>
+    <copyright>Copyright (C) 2011 - 2016 Timble CVBA (http://www.timble.net)</copyright>
     <license>GNU GPLv3 - http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>support@joomlatools.com</authorEmail>
     <authorUrl>www.joomlatools.com</authorUrl>
-    <version>2.1.0</version>
+    <version>3.0.0</version>
     <description>PLG_LOGMAN_KUNENA_DESC</description>
 
     <scriptfile>install.php</scriptfile>
