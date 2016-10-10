@@ -33,19 +33,19 @@ class PlgLogmanKunenaActivityKunena extends ComLogmanModelEntityActivity
         switch ($this->verb)
         {
             case 'restore':
-                $icon = 'icon-repeat';
+                $icon = 'k-icon-reload';
                 break;
             case 'lock':
-                $icon = 'icon-lock';
+                $icon = 'k-icon-lock-locked';
                 break;
             case 'unlock':
-                $icon = 'icon-ok-sign';
+                $icon = 'k-icon-lock-unlocked';
                 break;
             case 'stick':
-                $icon = 'icon-star';
+                $icon = 'k-icon-star';
                 break;
             case 'unstick':
-                $icon = 'icon-star-empty';
+                $icon = 'k-icon-underline';
                 break;
             default:
                 $icon = parent::getPropertyImage();
