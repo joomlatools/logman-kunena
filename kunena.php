@@ -18,19 +18,6 @@ class PlgLogmanKunena extends ComLogmanPluginJoomla
 {
     protected $_ignore_save = array();
 
-    protected function _initialize(KObjectConfig $config)
-    {
-        $config->append(array(
-            'resources' => array(
-                'topic',
-                'message',
-                'category'
-            )
-        ));
-
-        parent::_initialize($config);
-    }
-
     public function update(&$args)
     {
         // Ignore messages move tasks.
