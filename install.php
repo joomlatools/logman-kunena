@@ -24,24 +24,10 @@ class plgLogmanKunenaInstallerScript
         $return = true;
         $errors = array();
 
-        if (!class_exists('Koowa') || !class_exists('ComExtmanControllerExtension'))
+        if (version_compare($this->getLogmanVersion(), '3.0.0', '<'))
         {
-            if (file_exists(JPATH_ADMINISTRATOR.'/components/com_extman/extman.php') && !JPluginHelper::isEnabled('system', 'koowa')) {
-                $errors[] = sprintf(JText::_('This component requires System - Nooku Framework plugin to be installed and enabled. Please go to <a href=%s>Plugin Manager</a>, enable <strong>System - Nooku Framework</strong> and try again'), JRoute::_('index.php?option=com_plugins&view=plugins&filter_folder=system'));
-            }
-            else $errors[] = JText::_('This component requires EXTman to be installed on your site. Please download this component from <a href=http://joomlatools.com target=_blank>joomlatools.com</a> and install it');
-
-            $return = false;
-        }
-
-        // Check LOGman version.
-        if ($return === true)
-        {
-            if (version_compare($this->getLogmanVersion(), '2.1.0', '<'))
-            {
-                $errors[] = JText::_('This component requires a newer LOGman version. Please download the latest version from <a href=http://joomlatools.com target=_blank>joomlatools.com</a> and upgrade.');
-                $return   = false;
-            }
+            $errors[] = JText::_('This component requires a newer LOGman version. Please download the latest version from <a href=http://joomlatools.com target=_blank>joomlatools.com</a> and upgrade.');
+            $return   = false;
         }
 
         if ($return == false && $errors)
