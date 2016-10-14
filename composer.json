@@ -1,6 +1,6 @@
 {
-  "name": "joomlatools/plg_logman_kunena",
-  "type": "joomlatools-installer",
+  "name": "joomlatools/logman-kunena",
+  "type": "joomlatools-composer",
   "license": "GPLv3",
   "description": "Handles logging of Kunena Forum events",
   "keywords": [
@@ -19,6 +19,6 @@
     }
   ],
   "require": {
-    "joomlatools/installer": "*"
+    "joomlatools/composer": "*"
   }
 }

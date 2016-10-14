@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     LOGman
- * @copyright   Copyright (C) 2011 - 2015 Timble CVBA. (http://www.timble.net)
+ * @copyright   Copyright (C) 2011 - 2016 Timble CVBA. (http://www.timble.net)
  * @license     GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
  * @link        http://www.joomlatools.com
  */
@@ -17,19 +17,6 @@
 class PlgLogmanKunena extends ComLogmanPluginJoomla
 {
     protected $_ignore_save = array();
-
-    protected function _initialize(KObjectConfig $config)
-    {
-        $config->append(array(
-            'resources' => array(
-                'topic',
-                'message',
-                'category'
-            )
-        ));
-
-        parent::_initialize($config);
-    }
 
     public function update(&$args)
     {

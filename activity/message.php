@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     LOGman
- * @copyright   Copyright (C) 2011 - 2015 Timble CVBA. (http://www.timble.net)
+ * @copyright   Copyright (C) 2011 - 2016 Timble CVBA. (http://www.timble.net)
  * @license     GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
  * @link        http://www.joomlatools.com
  */
@@ -19,7 +19,8 @@ class PlgLogmanKunenaActivityMessage extends PlgLogmanKunenaActivityKunena
     {
         $config->append(array(
             'format'       => '{actor} {action} {object.type} {target} {target.subtype} {target.type}',
-            'object_table' => 'kunena_messages'
+            'object_table' => 'kunena_messages',
+            'context'      => 'site'
         ));
 
         parent::_initialize($config);
@@ -27,24 +28,25 @@ class PlgLogmanKunenaActivityMessage extends PlgLogmanKunenaActivityKunena
 
     protected function _objectConfig(KObjectConfig $config)
     {
-        $url = null;
-
-        if ($item_id = $this->_getMenuItem())
-        {
-            $metadata = $this->getMetadata();
-            $url      = $this->_getSiteRoute(sprintf('option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%s', $metadata->topic->id, $metadata->category, $item_id));
-
-            if ($row = $this->row) {
-                $url = $this->getObject('lib:http.url', array('url' => sprintf('%s#%s', $url->toString(), $row)));
-            }
-        }
+        $metadata = $this->getMetadata();
 
         $config->append(array(
-            'url'  => $url,
-            'type' => array('url' => $url, 'find' => 'object'),
+            'pages' => array(
+                'template'   => sprintf('option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%%s', $metadata->topic->id, $metadata->category),
+                'conditions' => array('option' => 'com_kunena', 'view' => 'home')
+            ),
+            'type'  => array('object' => true, 'find' => 'object')
         ));
 
         parent::_objectConfig($config);
+
+        if (($row = $this->row) && $config->url->site)
+        {
+            $url = $this->getObject('lib:http.url', array('url' => sprintf('%s#%s', $this->_getRoute($config->url->site), $row)));
+
+            $config->url->site = $url;
+            $config->type->append(array('url' => array('site' => $url)));
+        }
     }
 
     protected function _actionConfig(KObjectConfig $config)
@@ -68,20 +70,26 @@ class PlgLogmanKunenaActivityMessage extends PlgLogmanKunenaActivityKunena
 
     public function getPropertyTarget()
     {
-        $url = null;
-
-        if ($item_id = $this->_getMenuItem())
-        {
-            $metadata = $this->getMetadata();
-            $url      = $this->_getSiteRoute(sprintf('option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%s', $metadata->topic->id, $metadata->category, $item_id));
-        }
+        $metadata = $this->getMetadata();
 
         $config = array(
+            'find'       => 'target',
             'objectName' => $metadata->topic->title,
-            'url'     => $url,
-            'type'    => array('object' => true, 'objectName' => 'topic'),
-            'subtype' => array('object' => true, 'objectName' => 'Kunena')
+            'type'       => array('object' => true, 'objectName' => 'topic'),
+            'subtype'    => array('object' => true, 'objectName' => 'Kunena')
         );
+
+        $pages = $this->_findPages(array(
+            'conditions' => array('option' => 'com_kunena', 'view' => 'home'),
+            'levels'     => $this->getViewLevels(),
+            'components' => $this->package
+        ));
+
+        if ($pages)
+        {
+            $page = $pages[0];
+            $config['url'] = array('site' => sprintf('option=com_kunena&view=topic&id=%s&catid=%s&Itemid=%s', $metadata->topic->id, $metadata->category, $page->id));
+        }
 
         return $this->_getObject($config);
     }
